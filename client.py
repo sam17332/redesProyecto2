@@ -4,12 +4,15 @@ from PyInquirer import prompt, print_json, Separator
 resp = None
 
 def register():
+    print("")
+    print("REGISTER")
+    print("")
     user = input("Username: ")
     passw = input("password: ")
     ans = metodos.register(user, passw)
     if (ans):
         print("")
-        print("Account created")
+        print("Account created!")
         menu()
     else:
         print("")
@@ -17,14 +20,19 @@ def register():
         exit()
 
 def logIn():
+    print("")
     print("LOG IN")
+    print("")
     user = input("Username: ")
     passw = input("password: ")
     clientResp = metodos.Client(user, passw, 'redes2020.xyz')
+
     return clientResp
 
 def logOut(resp):
+    print("")
     print("LOG OUT")
+    print("")
     ans = input("Do you really want to sign out? \n (y/n): ")
     if ans == "y" or ans == "Y":
         resp.logout()
@@ -33,8 +41,18 @@ def logOut(resp):
     else:
         return
 
+def deleteAccount(resp):
+    print("")
+    print("ERASE ACCOUNT")
+    print("")
+    user = input("Username to delete: ")
+    resp.deleteAccount(user)
+    print("Account deleted")
+
 def addUser(resp):
+    print("")
     print("ADD TO CONTACTS")
+    print("")
     user = input("Enter the username you want to add to your contacts: ")
     ans = resp.addUser(user)
     if ans == 1:
@@ -43,11 +61,45 @@ def addUser(resp):
         return
 
 def directMessage(resp):
+    print("")
     print("SEND DIRECT MESSAGE")
+    print("")
     user = input("Enter the username: ")
     messg = input("Enter the message: ")
     resp.sendMessage(user, messg)
     print(str(user) + ": " + str(messg))
+
+def joinChatRoom(resp):
+    print("")
+    print("JOIN CHATROOM")
+    print("")
+    room = input("Enter the room you wanna join: ")
+    roomAlias = input("Enter your alias for the room: ")
+
+    funResp = resp.joinChatRoom(room, roomAlias)
+    if (funResp):
+        print("You joined the room: " + room + " as " + roomAlias)
+    else:
+        print("Invalid room name")
+        menu()
+
+def createChatRoom(resp):
+    print("")
+    print("CREATE CHATROOM")
+    print("")
+    room = input("Enter the room you wanna create: ")
+    roomAlias = input("Enter your alias for the room: ")
+    resp.createChatRoom(room, roomAlias)
+
+def roomMessage(resp):
+    print("")
+    print("SEND MESSAGE TO CHATROOM")
+    print("")
+    room = input("Enter the room you wanna chat: ")
+    message = input("Enter message: ")
+
+    resp.message_room(room, message)
+    print(room + ': ' + message)
 
 def menu():
     print(""" 
@@ -63,10 +115,9 @@ def menu():
         6. Add a user to my contacts
         7. View details of a contact
         8. Send direct message to a contact
-        9. Join a chat room
-        10. Define presence message
-        11. Send notification
-        12. Send files
+        9. Create a chat room
+        10. Join a chat room
+        11. Send a message to a joined room
         0. Exit
         """)
 
@@ -80,9 +131,9 @@ def menu():
     elif opt=="3":
         logOut(resp)
     elif opt=="4":
-        delete()
+        deleteAccount(resp)
     elif opt=="5":
-        viewContacts()
+        resp.viewContacts()
     elif opt=="6":
         addUser(resp)
     elif opt=="7":
@@ -90,13 +141,11 @@ def menu():
     elif opt=="8":
         directMessage(resp)
     elif opt=="9":
-        chatRoom()
+        createChatRoom(resp)
     elif opt=="10":
-        defineMessage()
+        joinChatRoom(resp)
     elif opt=="11":
-        sendNoti()
-    elif opt=="12":
-        sendFiles()
+        roomMessage(resp)
     elif opt=="0":
         print("SEE YOU LATER!")
         exit()
