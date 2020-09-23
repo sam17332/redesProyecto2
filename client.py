@@ -1,12 +1,10 @@
 import metodos
-from PyInquirer import prompt, print_json, Separator
 
 resp = None
 
 def register():
     print("")
     print("REGISTER")
-    print("")
     user = input("Username: ")
     passw = input("password: ")
     ans = metodos.register(user, passw)
@@ -22,7 +20,6 @@ def register():
 def logIn():
     print("")
     print("LOG IN")
-    print("")
     user = input("Username: ")
     passw = input("password: ")
     clientResp = metodos.Client(user, passw, 'redes2020.xyz')
@@ -32,7 +29,6 @@ def logIn():
 def logOut(resp):
     print("")
     print("LOG OUT")
-    print("")
     ans = input("Do you really want to sign out? \n (y/n): ")
     if ans == "y" or ans == "Y":
         resp.logout()
@@ -44,7 +40,6 @@ def logOut(resp):
 def deleteAccount(resp):
     print("")
     print("ERASE ACCOUNT")
-    print("")
     user = input("Username to delete: ")
     resp.deleteAccount(user)
     print("Account deleted")
@@ -52,7 +47,6 @@ def deleteAccount(resp):
 def addUser(resp):
     print("")
     print("ADD TO CONTACTS")
-    print("")
     user = input("Enter the username you want to add to your contacts: ")
     ans = resp.addUser(user)
     if ans == 1:
@@ -63,16 +57,16 @@ def addUser(resp):
 def directMessage(resp):
     print("")
     print("SEND DIRECT MESSAGE")
-    print("")
     user = input("Enter the username: ")
     messg = input("Enter the message: ")
     resp.sendMessage(user, messg)
-    print(str(user) + ": " + str(messg))
+    print("")
+    print("Message sent to: " + str(user))
+    print(str(messg))
 
 def joinChatRoom(resp):
     print("")
     print("JOIN CHATROOM")
-    print("")
     room = input("Enter the room you wanna join: ")
     roomAlias = input("Enter your alias for the room: ")
 
@@ -86,7 +80,6 @@ def joinChatRoom(resp):
 def createChatRoom(resp):
     print("")
     print("CREATE CHATROOM")
-    print("")
     room = input("Enter the room you wanna create: ")
     roomAlias = input("Enter your alias for the room: ")
     resp.createChatRoom(room, roomAlias)
@@ -94,7 +87,6 @@ def createChatRoom(resp):
 def roomMessage(resp):
     print("")
     print("SEND MESSAGE TO CHATROOM")
-    print("")
     room = input("Enter the room you wanna chat: ")
     message = input("Enter message: ")
 
@@ -147,7 +139,7 @@ def menu():
     elif opt=="11":
         roomMessage(resp)
     elif opt=="0":
-        print("SEE YOU LATER!")
+        print("BYE! SEE YOU LATER :)")
         exit()
     menu()
 

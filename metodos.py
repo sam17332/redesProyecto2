@@ -1,12 +1,8 @@
-import time
-import base64
-import binascii
 import threading
 import sleekxmpp
 import xmpp, sys
 from sleekxmpp.exceptions import IqError, IqTimeout
 from sleekxmpp.xmlstream.stanzabase import ET, ElementBase
-
 
 def register(user, passw):
 	jid = xmpp.JID(user)
@@ -127,7 +123,6 @@ class Client(sleekxmpp.ClientXMPP):
 
 	def sendMessage(self, user, message):
 		self.sendNotification(user, ' is writing a message', 'composing')
-		time.sleep(3)
 		self.send_message(mto=user,mbody=message,mtype="chat")
 
 	def message_room(self, room, message):
@@ -162,7 +157,7 @@ class Client(sleekxmpp.ClientXMPP):
 		groups = self.client_roster.groups()
 		for group in groups:
 			print('\n%s' % group)
-			print('-' * 72)
+			print('-' * 50)
 			for jid in groups[group]:
 				sub = self.client_roster[jid]['subscription']
 				name = self.client_roster[jid]['name']
@@ -176,11 +171,12 @@ class Client(sleekxmpp.ClientXMPP):
 					show = 'available'
 					if pres['status']:
 						print('       %s' % pres['status'])
+		print('-' * 50)
 
 	def joinChatRoom(self, room, roomAlias):
 		try:
 			self.plugin['xep_0045'].joinMUC(room, roomAlias)
-			self.sendNotificationChatRoom(room, roomAlias + ' just entered the chatroom')
+			self.sendNotificationChatRoom(room, roomAlias + ' just entered the chatroom!')
 			return True
 		except IqError as e:
 			raise Exception("Unable to create room", e)
@@ -191,26 +187,3 @@ class Client(sleekxmpp.ClientXMPP):
 		self.plugin['xep_0045'].joinMUC(room, roomAlias, pstatus="ROOM", pfrom=self.boundjid.full, wait=True)
 		self.plugin['xep_0045'].setAffiliation(room, self.boundjid.full, affiliation='owner')
 		self.plugin['xep_0045'].configureRoom(room, ifrom=self.boundjid.full)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
