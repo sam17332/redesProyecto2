@@ -67,7 +67,7 @@ If you don't have and account, select the option 1. Then enter a username of you
 #### Sign in - Option 2
 If you already have an account, select the option 2 and sign in with your username `myName@redes2020.xyz` and your password. If you don't hava an accoun, select option 1.
 
-#### Sign out - Option 3
+#### Log out - Option 3
 To use this option you need to be loged in. 
 When you select it, it will ask you if you really want to sign out, so you have to enter "y" for yes or "n" for no.
 
@@ -98,6 +98,9 @@ To join a chatroom you have to enter the name of the chatroom you wanna create, 
 To use this option you need to be loged in and need to join a chatroom.
 Once you've join a chatroom you have to enter the name of the chatroom, for example `myRoom@conference.redes2020.xyz`, and then enter the message you wanna send.
 
+#### Exit - Option 0
+If you want to kill the program select this option.
+
 ## XMPP Documentation
 There's a document document named "XMPP-The definitive guide.pdf" on the repository, it has everything you need to know about XMPP.
 
@@ -106,8 +109,3 @@ There's a document document named "XMPP-The definitive guide.pdf" on the reposit
 - https://github.com/fritzy/SleekXMPP/blob/develop/examples/roster_browser.py
 - https://xmpp.org
 - https://slixmpp.readthedocs.io/api/stanza/iq.html
-
-
-
-
-
