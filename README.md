@@ -94,12 +94,18 @@ To create a chatroom you have to enter the name of the chatroom you wanna create
 To use this option you need to be loged in.
 To join a chatroom you have to enter the name of the chatroom you wanna create, for example `myRoom@conference.redes2020.xyz` and then you have to enter the alias you want to have on the chatroom, for example myAlias.
 
-
 #### Send a message to a joined chat room - Option 10
 To use this option you need to be loged in and need to join a chatroom.
 Once you've join a chatroom you have to enter the name of the chatroom, for example `myRoom@conference.redes2020.xyz`, and then enter the message you wanna send.
 
+## XMPP Documentation
+There's a document document named "XMPP-The definitive guide.pdf" on the repository, it has everything you need to know about XMPP.
 
+## References
+- XMPP-The definitive guide.pdf
+- https://github.com/fritzy/SleekXMPP/blob/develop/examples/roster_browser.py
+- https://xmpp.org
+- https://slixmpp.readthedocs.io/api/stanza/iq.html
 
 
 
