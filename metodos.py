@@ -113,10 +113,12 @@ class Client(sleekxmpp.ClientXMPP):
 
 	def addUser(self, user):
 		try:
+			message = ' added you'
 			self.send_presence_subscription(pto=user)
+			self.send_message(mto=user, mbody=message,mtype="chat")
 			return 1
 		except IqError:
-			raise Exception("Unable to add the user to your contacts")
+			raise Exception("Unable to add the user to your contacts :(")
 			sys.exit(1)
 		except IqTimeout:
 			raise Exception("Server Error") 
@@ -132,10 +134,10 @@ class Client(sleekxmpp.ClientXMPP):
 		delete = self.Iq()
 		delete['from'] = account
 		delete['type'] = 'set'
-		itemXML = ET.fromstring("<query xmlns='jabber:iq:register'>\
+		stnz = ET.fromstring("<query xmlns='jabber:iq:register'>\
 									<remove/>\
 								</query>")
-		delete.append(itemXML)
+		delete.append(stnz)
 		try:
 			delete.send(now=True)
 			print("Account deleted succesfuly")

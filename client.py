@@ -29,7 +29,7 @@ def logIn():
 def logOut(resp):
     print("")
     print("LOG OUT")
-    ans = input("Do you really want to sign out? \n (y/n): ")
+    ans = input("Do you really want to log out? (y/n): ")
     if ans == "y" or ans == "Y":
         resp.logout()
         print("")
@@ -40,7 +40,7 @@ def logOut(resp):
 def deleteAccount(resp):
     print("")
     print("ERASE ACCOUNT")
-    user = input("Username to delete: ")
+    user = input("Enter the username you want to delete: ")
     resp.deleteAccount(user)
     print("Account deleted")
 
@@ -105,11 +105,10 @@ def menu():
         4. Delete account
         5. View contacts
         6. Add a user to my contacts
-        7. View details of a contact
-        8. Send direct message to a contact
-        9. Create a chat room
-        10. Join a chat room
-        11. Send a message to a joined room
+        7. Send direct message to a contact
+        8. Create a chat room
+        9. Join a chat room
+        10. Send a message to a joined chat room
         0. Exit
         """)
 
@@ -129,14 +128,12 @@ def menu():
     elif opt=="6":
         addUser(resp)
     elif opt=="7":
-        viewDetails()
-    elif opt=="8":
         directMessage(resp)
-    elif opt=="9":
+    elif opt=="8":
         createChatRoom(resp)
-    elif opt=="10":
+    elif opt=="9":
         joinChatRoom(resp)
-    elif opt=="11":
+    elif opt=="10":
         roomMessage(resp)
     elif opt=="0":
         print("BYE! SEE YOU LATER :)")
