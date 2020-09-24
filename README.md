@@ -42,6 +42,14 @@ Installed with python
 - sys
 Installed with python
 
+## Files
+
+- `client.py`
+Is the main document. It has the menu and all the calls to the methods of the class Client of metodos.py
+- `metodos.py`
+It has all the methods that are used to show the results that the options of the menu request.
+
+
 ## Implemented functionalities
 
 - Register an account
